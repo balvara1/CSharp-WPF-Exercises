@@ -1,0 +1,80 @@
+﻿<Window x:Class="Bernadette_Alvarado_Exercise03.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bernadette_Alvarado_Exercise03"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="490.8" Width="1078.4"
+        x:Name="_window">
+    <Grid Margin="0,0,23.6,25">
+        <Grid HorizontalAlignment="Left" Height="334" Margin="70,28,0,0" VerticalAlignment="Top" Width="193">
+            <ComboBox x:Name="beverageComboBox" SelectionChanged="beverageComboBox_SelectionChanged"  HorizontalAlignment="Left" Margin="32,51,0,0" VerticalAlignment="Top" Width="120"/>
+
+            <ComboBox x:Name="maincourseComboBox" SelectionChanged="maincourseComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="32,114,0,0" VerticalAlignment="Top" Width="120"/>
+
+            <ComboBox x:Name="appetizerComboBox" SelectionChanged="appetizerComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="32,174,0,0" VerticalAlignment="Top" Width="120"/>
+
+            <ComboBox x:Name="dessertComboBox" SelectionChanged="dessertComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="32,237,0,0" VerticalAlignment="Top" Width="120"/>
+
+            <Label Content="Beverage" HorizontalAlignment="Left" Margin="63,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.036,-0.191"/>
+            <Label Content="Main Course" HorizontalAlignment="Left" Margin="55,88,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.073,0.484"/>
+            <Label Content="Appetizer" HorizontalAlignment="Left" Margin="61,148,0,0" VerticalAlignment="Top"/>
+            <Label Content="Dessert" HorizontalAlignment="Left" Margin="63,211,0,0" VerticalAlignment="Top"/>
+            <GroupBox Header="Menu Items" HorizontalAlignment="Left" Height="314" Margin="10,10,0,0" VerticalAlignment="Top" Width="158"/>
+
+        </Grid>
+
+        <GroupBox Header="Order List" HorizontalAlignment="Left" Height="358" Margin="5,8,0,0" VerticalAlignment="Top" Width="360">
+            <DataGrid x:Name="orderDataGrid" AutoGenerateColumns="true" ItemsSource="{Binding}" CanUserDeleteRows="True" CanUserAddRows="True"
+                          HorizontalAlignment="Left" Width="358" Margin="379,-18,-389,-7.8" HorizontalGridLinesBrush="Black"
+                      >
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                   Color="#9ccbdb"/>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="140" />
+                    <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="90"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price , StringFormat={}${0}}" Width="60"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="60"/>
+
+                    <!--remove row
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DataContext.DeleteCommand, ElementName=_window}" CommandParameter="{Binding}">Remove</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                   -->
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </GroupBox>
+        <Grid HorizontalAlignment="Left" Height="152" Margin="772,48,0,0" VerticalAlignment="Top" Width="238">
+            <Label Content="SubTotal" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Label Content="Tax" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.354,-0.172"/>
+            <Label Content="Total" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="subtotalTextBox" HorizontalAlignment="Left" Height="23" Margin="106,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="taxTextBox" HorizontalAlignment="Left" Height="23" Margin="106,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="totalTextBox" HorizontalAlignment="Left" Height="23" Margin="106,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+            <Button x:Name="clearButton" Content="Clear" Click="clearButton_Clicked" HorizontalAlignment="Left" Margin="126,116,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.519,-0.243"/>
+        </Grid>
+        <DockPanel HorizontalAlignment="Left" Height="74" LastChildFill="False" Margin="27,384,0,-16.6" VerticalAlignment="Top" Width="267">
+            <StatusBar Height="64" VerticalAlignment="Top" Width="251">
+                <Label x:Name="logoLabel" MouseDown="logoLabel_MouseDown" Height="64" Width="62">
+                    <Label.Background>
+                        <ImageBrush ImageSource=".\Images\logo.png"></ImageBrush>
+                    </Label.Background>
+                </Label>
+                <StatusBarItem Content="Bernadette Alvarado" Margin="0,10,0,0" Width="122"/>
+
+            </StatusBar>
+        </DockPanel>
+
+
+    </Grid>
+</Window>
